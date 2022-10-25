@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <style>
+        .image{
+          background-image: url("KBC-registeration-2021-4-questions-on-screen-1.jpg");
+          padding: 10px;
+          background-position: center;
+          background-repeat: no-repeat;
+          width: 1430px;
+          height: 668px;
+          background-color: black;
+        }
+        #question{
+            color: white;
+            margin-top: 230px;
+        }
+        .tp{
+            margin-top: 10px;
+        }
+        #countdown{
+            color: white;
+        }
+        .inpu{
+            border-radius: 50px;
+            margin-top: 28px;
+        }
+        .inpu:hover{
+            background-color: goldenrod;
+        }
+        .inpu2{
+            border-radius: 50px;
+            margin-top: 13px;
+        }
+        .inpu2:hover{
+            background-color: goldenrod;
+        }
+        .inpr{
+            margin-left: 40px;
+        }
+    </style>
+    <script>
+        
+        var nam = prompt("Enter Your Name:-");
+        nam=nam.toUpperCase();
+        //input color change on click
+        $(document).ready(function(){
+            $(".inpu").click(function(){
+                $(".inpu").css("background-color", "red");
+            });
+        });
+        $(document).ready(function(){
+            $(".inpu2").click(function(){
+                $(".inpu2").css("background-color", "red");
+            });
+        });
+        //random question number array******************************************8
+        var rr=[];
+        var nr=[];
+        for(var i=0;i<=100;i++){
+            var r = Math.floor(Math.random()*10);
+            if(!rr.includes(r)){
+                nr=nr+r;
+            }
+            rr=rr+r;
+        }        
+        console.log(nr);
+        //answers values*******************************************************
+        var k=0;
+        var answers='';
+        var val;
+        setInterval(function selected(){
+            val=$(`input[type='radio'][name='${nr[k]}']:checked`).val();
+            console.log(val);
+            answers=answers+val;
+            k++;
+        },5000);
+        setTimeout(function(){
+            answers=answers.replace("undefined",0);
+            answers=answers.replace("undefined",0);
+            answers=answers.replace("undefined",0);
+            answers=answers.replace("undefined",0);
+            answers=answers.replace("undefined",0);
+            answers=answers.replace("undefined",0);
+            answers=answers.replace("undefined",0);
+            answers=answers.replace("undefined",0);
+            answers=answers.replace("undefined",0);
+            answers=answers.replace("undefined",0);
+            console.log("answers given are "+answers);
+            //matching********************************************
+            var count=0;
+            var m =["c","a","b","a","c","a","c","d","c","d"];
+            for(var u=0;u<10;u++){
+                if(answers[u]==m[nr[u]]){
+                    count++;
+                }
+            }
+        document.getElementById("question").style.fontSize="30px";
+        document.getElementById("question").innerHTML= nam+" Your score is "+count+" out of 10";
+        console.log(count+" out of 10");},51000);
+        
+        //questions display*********************************************
+        var i=0,j=0,f=0;
+        var a=1;
+        setInterval(function(){
+            if(f==56){
+                location.href("kbc.html");
+            }
+            if(i==5 || i==0 && a==1){
+                i=0;
+                if(j>0){
+                    document.getElementById(nr[j-1]).style.display="none";
+                }
+                
+                // document.getElementById("question").innerHTML="Q"+a+": "+q[nr[j]].Q+"<br><br>"+q[nr[j]].ans;
+                // document.getElementById("qno").innerHTML=a;
+                var qq = document.getElementById(nr[j]);
+                // qq.style.display="block";
+                console.log(nr[j]);
+                document.getElementById("question").innerHTML="Q:-"+a+" "+qq.innerHTML;
+                j++;
+                a++;
+            }
+            document.getElementById("countdown").innerHTML=i;
+            i++;
+            f++;
+        },1000);
+        //matching******************************
+        // setTimeout(function(){
+        //     var p=0;
+        //     var count=0;
+        //     var m =["c","a","b","a","c","a","c","d","c","d"];
+        //     for(var l=0;l<10;l=l++){
+        //         if(answers[l]==m[nr[j]]){
+        //             count++;
+        //         }
+        //         p++;
+        //     }
+        // document.getElementById("result").innerHTML=count+"out of 10";
+        // console.log(count+" out of 10");
+        // },52000);
+    
+        //questions
+        var q=[{Q: "What is the capital of India?", ans: "A.- Bihar|| B.- M.P.|| C.- Delhi|| D.- Mumbai"},
+               {Q: "How many cheetah are there in India?", ans: "A.- 8||    B.- 6||    C.- 12||   D.- 9"},
+               {Q: "Which mountain divide India into two halves?", ans: "A.- Himalaya||     B.- Vindhya||      C.- Aravali||      D.- Albrus"},
+               {Q: "Which colour is the universal absorber?", ans: "A.-Black|| B.-White|| C.- Orange|| D.- Blue||"},
+               {Q: "Haemoglobin term is related to which thing in our body?",ans: "A.-Bone|| B.-BoneMarrow|| C.-Blood|| D.-Eye"},
+               {Q: "Russia terrorising which country?",ans: "A.-SouthKorea|| B.-Crimea|| C.-Ukraine|| D.-Japan"},
+               {Q: "Ginni Index is related to which thing?", ans: "A.-GDP|| B.-IncomeGap|| C.-ValueAddedTax|| D.-CustomDuty"},
+               {Q: "Who is the largest beef exporter in the world?",ans: "A.-USA|| B.-Pakistan|| C.-Russia|| D.-India"},
+               {Q: "Deepest trench in Indian ocean?",ans: "A.-React|| B.-Python|| C.-Java|| D.-FullStack"},
+               {Q: "Vice-President of India is?",ans: "A.-D.Murmu|| B.-Modiji|| C.-J.Dhankar|| D.-Gandhiji"}];
+    </script>
+</head>
+<body>
+    <div  class="container-sm image img-fluid">
+        <center>
+            <div id="countdown" class="h1">1
+            </div>
+            <div id="question" class="container-fluid"> 
+                                                        
+            </div>                                      
+            <div id="0" style="display:none">           
+                What is the capital of India?
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu "><input type="radio" name="0" value="a">Bihar</div>
+                    <div class="col-sm-3 pt-2 inpu inpr "><input type="radio" name="0" value="b">Mumbai</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu2 "><input type="radio" name="0" value="c">Delhi</div>
+                    <div class="col-sm-3 pt-2 inpu2 inpr "><input type="radio" name="0" value="d">M.P.</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+            </div>
+            <div id="1" style="display:none">
+                How many cheetah are there in India?
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-4pt-2 inpu " style="font-size:20px;"><input type="radio" name="1" value="a" >8</div>
+                    <div class="col-sm-3 pt-4pt-2 inpu inpr " style="font-size:20px;"><input type="radio" name="1" value="b" >6</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-4pt-2 inpu2 " style="font-size:20px;"><input type="radio" name="1" value="c" >12</div>
+                    <div class="col-sm-3 pt-4pt-2 inpu2 inpr " style="font-size:20px;"><input type="radio" name="1" value="d" >9</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+            </div>
+            <div id="2" style="display:none">
+                Which mountain divide India into two halves?
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu "><input type="radio" name="2" value="a">Himalaya</div>
+                    <div class="col-sm-3 pt-2 inpu inpr "><input type="radio" name="2" value="b">Vindhya</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu2 "> <input type="radio" name="2" value="c">Aravali</div>
+                    <div class="col-sm-3 pt-2 inpu2 inpr "><input type="radio" name="2" value="d">Albrus</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+            </div>
+            <div id="3" style="display:none">
+                Which colour is the universal absorber?
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu "> <input type="radio" name="3" value="a">Black</div>
+                    <div class="col-sm-3 pt-2 inpu inpr "> <input type="radio" name="3" value="b">White</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu2 "> <input type="radio" name="3" value="c">Orange</div>
+                    <div class="col-sm-3 pt-2 inpu2 inpr ">  <input type="radio" name="3" value="d">Blue</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+            </div>
+            <div id="4" style="display:none">
+                Haemoglobin term is related to which thing in our body?
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu "> <input type="radio" name="4" value="a">Bone</div>
+                    <div class="col-sm-3 pt-2 inpu inpr "> <input type="radio" name="4" value="b">BoneMarrow</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu2 ">  <input type="radio" name="4" value="c">Blood</div>
+                    <div class="col-sm-3 pt-2 inpu2 inpr "><input type="radio" name="4" value="d">Eye</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+            </div>
+            <div id="5" style="display:none">
+                Russia terrorising which country? 
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu "> <input type="radio" name="5" value="a">Ukraine</div>
+                    <div class="col-sm-3 pt-2 inpu inpr "><input type="radio" name="5" value="b">Crimea</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu2 "><input type="radio" name="5" value="c">India</div>
+                    <div class="col-sm-3 pt-2 inpu2 inpr "><input type="radio" name="5" value="d">Japan</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+            </div>
+            <div id="6" style="display:none">
+                Ginni Index is related to which thing? 
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu "> <input type="radio" name="6" value="a">CustomDuty</div>
+                    <div class="col-sm-3 pt-2 inpu inpr "><input type="radio" name="6" value="b">GST</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu2 "><input type="radio" name="6" value="c">IncomeGap</div>
+                    <div class="col-sm-3 pt-2 inpu2 inpr "><input type="radio" name="6" value="d">GDP</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+            </div>
+            
+            <div id="7" style="display:none">
+                Who is the largest beef exporter in the world?
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu "> <input type="radio" name="7" value="a">Pakistan</div>
+                    <div class="col-sm-3 pt-2 inpu inpr "><input type="radio" name="7" value="b">USA</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu2 "><input type="radio" name="7" value="c">Russia</div>
+                    <div class="col-sm-3 pt-2 inpu2 inpr "> <input type="radio" name="7" value="d">Brazil</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+            </div>
+            <div id="8" style="display:none">
+                Deepest trench in Indian ocean?
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu "><input type="radio" name="8" value="a">Python</div>
+                    <div class="col-sm-3 pt-2 inpu inpr "> <input type="radio" name="8" value="b">React</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu2 "><input type="radio" name="8" value="c">Java</div>
+                    <div class="col-sm-3 pt-2 inpu2 inpr "><input type="radio" name="8" value="d">FullStackk</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+            </div>
+            <div id="9" style="display:none">
+                Vice-President of India is?  
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu "><input type="radio" name="9" value="a">D.Murmu</div>
+                    <div class="col-sm-3 pt-2 inpu inpr "><input type="radio" name="9" value="b">Modiji</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 "></div>
+                    <div class="col-sm-3 pt-2 inpu2 "><input type="radio" name="9" value="c">Gandhiji</div>
+                    <div class="col-sm-3 pt-2 inpu2 inpr "> <input type="radio" name="9" value="d">J.Dhankar</div>
+                    <div class="col-sm-3 "></div>
+                </div>
+            </div>
+        </center>
+</body>
+</html>
